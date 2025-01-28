@@ -383,4 +383,35 @@ Enforces strict identity verification for every device and user.
 
 ---
 
+## NAT (Network Address Translation)
+
+NAT is a method used to map private IP addresses to a public IP address and vice versa, enabling devices in a private network to communicate with external networks.
+
+- **How it Works**:
+  - Translates private IP addresses to a public IP address for outgoing traffic.
+  - Maps incoming responses back to the originating private IP address.
+
+- **Types of NAT**:
+  1. **Static NAT**:
+     - Maps one private IP to one public IP.
+     - Useful for hosting services.
+  2. **Dynamic NAT**:
+     - Maps a group of private IPs to a pool of public IPs.
+     - Allocates public IPs dynamically as needed.
+  3. **PAT (Port Address Translation)**:
+     - Maps multiple private IPs to a single public IP using unique port numbers.
+     - Most commonly used.
+
+- **Benefits**:
+  - Conserves public IP addresses.
+  - Enhances security by masking internal network structure.
+
+- **Limitations**:
+  - Can complicate peer-to-peer applications.
+  - May introduce slight latency.
+
+- **Use Cases**:
+  - Home and enterprise networks.
+  - Cloud services and VPNs.
+
 
