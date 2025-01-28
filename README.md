@@ -49,42 +49,72 @@ Protocols are rules that define how data is transmitted over a network. Key exam
 
 The OSI (Open Systems Interconnection) and TCP/IP models are frameworks for understanding and designing network protocols and communication.
 
+## OSI and TCP/IP Models
+
+The OSI (Open Systems Interconnection) and TCP/IP models are frameworks for understanding and designing network protocols and communication.
+
 ### OSI Model
 The OSI model has 7 layers, each with specific responsibilities:
 
 1. **Application Layer**:
-   - Interfaces with the user.
-   - Protocols: HTTP, FTP, SMTP.
+   - Provides network services directly to end-users or applications.
+   - Protocols: HTTP, FTP, SMTP, POP3, IMAP.
 2. **Presentation Layer**:
-   - Data translation, encryption, compression.
-   - Formats data for the Application layer.
+   - Ensures data is in a readable format for the application layer.
+   - Handles encryption, compression, and translation.
+   - Examples: SSL/TLS for encryption.
 3. **Session Layer**:
-   - Manages sessions and connections.
-   - Example: Session management in RPC.
+   - Manages sessions and controls dialogues between computers.
+   - Provides synchronization and checkpointing for data recovery.
+   - Example: Session management in RPC (Remote Procedure Calls).
 4. **Transport Layer**:
-   - Ensures reliable data transfer.
-   - Protocols: TCP, UDP.
+   - Ensures reliable data transfer with error detection and correction.
+   - Handles flow control and segmentation of data.
+   - Protocols: TCP (reliable, connection-oriented), UDP (faster, connectionless).
 5. **Network Layer**:
-   - Handles routing and addressing.
-   - Protocols: IP, ICMP.
+   - Determines the best physical path for data transfer.
+   - Handles logical addressing and routing.
+   - Protocols: IP (IPv4, IPv6), ICMP, ARP.
 6. **Data Link Layer**:
-   - Provides error detection and framing.
-   - Protocols: Ethernet, PPP.
+   - Ensures error-free data transfer between nodes on the same network.
+   - Divided into two sublayers:
+     - **MAC (Media Access Control)**: Handles access to the physical medium.
+     - **LLC (Logical Link Control)**: Manages frame synchronization and error checking.
+   - Protocols: Ethernet, Wi-Fi (802.11), PPP.
 7. **Physical Layer**:
-   - Defines hardware connections and transmission.
-   - Includes cables, switches, and signals.
+   - Defines hardware-level specifications for data transmission.
+   - Includes cables, switches, NICs, and signal encoding.
 
 ### TCP/IP Model
-The TCP/IP model simplifies communication with 4 layers:
+The TCP/IP model simplifies communication by combining layers, focusing on the practical implementation of networking.
 
 1. **Application Layer**:
-   - Combines the OSI Application, Presentation, and Session layers.
-   - Protocols: HTTP, FTP, DNS.
+   - Combines OSI’s Application, Presentation, and Session layers.
+   - Provides protocols for data exchange between applications.
+   - Protocols: HTTP, FTP, DNS, SMTP, SNMP.
 2. **Transport Layer**:
-   - Manages end-to-end communication.
-   - Protocols: TCP, UDP.
+   - Ensures reliable end-to-end communication and data integrity.
+   - Manages error checking and retransmission of lost packets.
+   - Protocols: TCP (reliable), UDP (faster, lightweight).
 3. **Internet Layer**:
+   - Handles logical addressing and routing across interconnected networks.
+   - Ensures data packets are delivered to the correct destination.
+   - Protocols: IP (IPv4, IPv6), ICMP, IGMP.
+4. **Network Interface Layer**:
+   - Combines OSI’s Data Link and Physical layers.
+   - Manages hardware addressing and access to the transmission medium.
+   - Protocols: Ethernet, Wi-Fi, ARP.
 
+### Key Differences Between OSI and TCP/IP Models
+
+| Aspect               | OSI Model                           | TCP/IP Model                     |
+|----------------------|-------------------------------------|----------------------------------|
+| **Structure**        | 7 layers                           | 4 layers                        |
+| **Flexibility**      | Conceptual, not protocol-specific  | Protocol-oriented and practical |
+| **Usage**            | Theoretical reference framework    | Widely used for real-world networking |
+| **Reliability**      | Built-in session and presentation layers | Relies on the application to handle these aspects |
+
+---
 ## Wireless Networking
 
 **Wi-Fi:** Wireless connectivity within a network.
