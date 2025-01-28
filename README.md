@@ -59,3 +59,131 @@ Protocols are rules that define how data is transmitted over a network. Key exam
 - Facilitates communication (email, VoIP).
 - Provides centralized data management.
 - Supports cloud computing and remote work.
+
+
+
+
+# 1. Network Topologies
+Network topology refers to the arrangement of devices in a network. Key types include:
+
+**Physical Topologies**
+
+**Bus Topology:** All devices connect to a single central cable (the bus). Easy to set up but prone to failures if the main cable breaks.
+
+**Star Topology:** Devices connect to a central hub/switch. Easy to troubleshoot but relies heavily on the central hub.
+
+**Ring Topology:** Devices form a closed loop. Each device is connected to two others. Failure in one device can affect the entire network unless a dual-ring topology is used.
+
+**Mesh Topology:** Devices are interconnected. High reliability but complex and expensive.
+
+**Hybrid Topology:** Combines two or more types of topologies, e.g., star-bus or star-ring.
+
+# 2. IP Addressing and Subnetting
+
+## IP addresses uniquely identify devices on a network.
+
+**IPv4 Addressing**
+
+**Format:** Four 8-bit octets (e.g., 192.168.1.1).
+
+- Classes:
+
+**Class A:** For large networks (1.0.0.0 to 126.0.0.0).
+
+**Class B:** For medium networks (128.0.0.0 to 191.255.0.0).
+
+**Class C:** For small networks (192.0.0.0 to 223.255.255.0).
+
+## Subnet Mask: Defines which part of the IP is the network ID and which is the host ID (e.g., 255.255.255.0).
+**IPv6 Addressing**
+
+Solves the shortage of IPv4 addresses.
+
+Format: 128-bit hexadecimal (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334).
+Subnetting
+Dividing a network into smaller segments (subnets) to improve efficiency. Example:
+
+IP: 192.168.1.0/24
+Subnet mask: 255.255.255.192
+This allows for multiple smaller networks within the main network.
+
+# 3. Routing
+Routing determines how data packets travel from source to destination.
+
+**Static Routing:** Manually configured routes.
+
+**Dynamic Routing:** Uses algorithms and protocols like OSPF (Open Shortest Path First), BGP (Border Gateway Protocol), and RIP (Routing Information Protocol) to determine paths dynamically.
+
+## Key Concepts:
+
+**Default Gateway:** The router that forwards traffic to external networks.
+
+**Routing Table:** Maintains information about network paths.
+
+# 4. Network Security
+
+Common Threats
+DDoS (Distributed Denial of Service): Overwhelms a network with excessive traffic.
+Man-in-the-Middle (MITM): Intercepts communication between two parties.
+Phishing: Tricks users into revealing sensitive information.
+Ransomware: Encrypts files and demands payment.
+Security Measures
+Firewalls: Blocks unauthorized traffic.
+VPNs (Virtual Private Networks): Encrypts data between the user and the server.
+Antivirus and IDS/IPS: Detects and prevents malware and intrusions.
+Authentication Mechanisms: Use multi-factor authentication (MFA) and strong passwords.
+
+# 5. Wireless Technologies
+
+**Wi-Fi Standards (IEEE 802.11)**
+802.11b: Speeds up to 11 Mbps.
+802.11g: Speeds up to 54 Mbps.
+802.11n: Speeds up to 600 Mbps.
+802.11ac: Gigabit speeds on dual-band (2.4 GHz and 5 GHz).
+802.11ax (Wi-Fi 6): Higher capacity and efficiency in dense environments.
+
+## Frequency Bands
+2.4 GHz: Longer range but slower speed.
+5 GHz: Faster speed but shorter range.
+Encryption Protocols
+WEP (Weak security, outdated).
+WPA/WPA2: Stronger security.
+WPA3: Latest and most secure.
+
+
+# 6. Protocols in Detail
+TCP (Transmission Control Protocol)
+Connection-oriented.
+Ensures reliable data delivery.
+Uses a 3-way handshake for connection setup.
+UDP (User Datagram Protocol)
+Connectionless.
+Faster but less reliable (e.g., used in gaming, VoIP).
+DNS (Domain Name System)
+Resolves domain names (e.g., www.google.com) to IP addresses (e.g., 142.250.190.78).
+Hierarchical structure with root, TLD (Top-Level Domain), and authoritative servers.
+DHCP (Dynamic Host Configuration Protocol)
+Automatically assigns IP addresses to devices.
+
+# 7. Advanced Networking Concepts
+NAT (Network Address Translation)
+Converts private IP addresses to a public IP for internet access.
+Types:
+Static NAT: One-to-one mapping.
+Dynamic NAT: Pool of public IPs assigned dynamically.
+PAT (Port Address Translation): Many devices share one public IP.
+VLAN (Virtual LAN)
+Segments a physical network into multiple logical networks for security and efficiency.
+SDN (Software-Defined Networking)
+Centralized network control via software.
+Separates the control plane from the data plane.
+Cloud Networking
+Provides network services like storage, servers, and applications over the internet (e.g., AWS, Azure).
+
+# 8. Network Troubleshooting Tools
+
+Ping: Tests connectivity between devices.
+Traceroute: Tracks the path data takes to a destination.
+NSLookup: Troubleshoots DNS-related issues.
+Wireshark: Captures and analyzes network traffic.
+Netstat: Displays network connections and stats.
