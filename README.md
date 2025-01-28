@@ -45,6 +45,45 @@ Protocols are rules that define how data is transmitted over a network. Key exam
 **Presentation:** Data formatting and encryption.
 
 **Application:** Interfaces for end-users (e.g., browsers, email).
+## OSI and TCP/IP Models
+
+The OSI (Open Systems Interconnection) and TCP/IP models are frameworks for understanding and designing network protocols and communication.
+
+### OSI Model
+The OSI model has 7 layers, each with specific responsibilities:
+
+1. **Application Layer**:
+   - Interfaces with the user.
+   - Protocols: HTTP, FTP, SMTP.
+2. **Presentation Layer**:
+   - Data translation, encryption, compression.
+   - Formats data for the Application layer.
+3. **Session Layer**:
+   - Manages sessions and connections.
+   - Example: Session management in RPC.
+4. **Transport Layer**:
+   - Ensures reliable data transfer.
+   - Protocols: TCP, UDP.
+5. **Network Layer**:
+   - Handles routing and addressing.
+   - Protocols: IP, ICMP.
+6. **Data Link Layer**:
+   - Provides error detection and framing.
+   - Protocols: Ethernet, PPP.
+7. **Physical Layer**:
+   - Defines hardware connections and transmission.
+   - Includes cables, switches, and signals.
+
+### TCP/IP Model
+The TCP/IP model simplifies communication with 4 layers:
+
+1. **Application Layer**:
+   - Combines the OSI Application, Presentation, and Session layers.
+   - Protocols: HTTP, FTP, DNS.
+2. **Transport Layer**:
+   - Manages end-to-end communication.
+   - Protocols: TCP, UDP.
+3. **Internet Layer**:
 
 ## Wireless Networking
 
