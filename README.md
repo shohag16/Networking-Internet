@@ -1,4 +1,21 @@
 # Networking and Internet
+## topic list
+1. ipv4 addressing
+2. packet snipping and traffic analysis
+3. ipv4 multicast
+4. ipv6
+5. ipv6 transition
+6. cellular network
+7. Routing
+8. ospf
+9. BGP
+10. MPLS/MPLS ipv6
+11. VPN
+12. mpls vpn
+13. Qos
+14. CDN
+
+
 ## Overview
 
 Computer networking is the practice of connecting multiple computing devices to share resources, data, and communicate effectively. Networks enable devices such as computers, servers, routers, and switches to interact and exchange information. Here's a basic overview of the topic:
@@ -155,26 +172,130 @@ Network topology refers to the arrangement of devices in a network. Key types in
 
 **Format:** Four 8-bit octets (e.g., 192.168.1.1).
 
-- Classes:
+# Subnetting: A Complete Guide
 
-**Class A:** For large networks (1.0.0.0 to 126.0.0.0).
+## 📌 Introduction
+Subnetting is the process of dividing a large network into smaller, more manageable sub-networks (**subnets**). It improves network efficiency, security, and organization.
 
-**Class B:** For medium networks (128.0.0.0 to 191.255.0.0).
+---
 
-**Class C:** For small networks (192.0.0.0 to 223.255.255.0).
+## 📌 IP Address Basics
+An **IP address** consists of four octets (e.g., `192.168.1.1`), where each octet is an 8-bit number (0-255).
 
-## Subnet Mask: Defines which part of the IP is the network ID and which is the host ID (e.g., 255.255.255.0).
-**IPv6 Addressing**
+**Example:**
+- **IP Address:** `192.168.1.1`
+- **Binary Representation:** `11000000.10101000.00000001.00000001`
 
-Solves the shortage of IPv4 addresses.
+---
 
-Format: 128-bit hexadecimal (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334).
-Subnetting
-Dividing a network into smaller segments (subnets) to improve efficiency. Example:
+## 📌 Classes of IP Addresses
 
-IP: 192.168.1.0/24
-Subnet mask: 255.255.255.192
-This allows for multiple smaller networks within the main network.
+| Class | Range | Default Subnet Mask | Default Network Bits | Default Host Bits | No. of Hosts per Network |
+|-------|------------|------------------|----------------|----------------|-------------------|
+| **A** | `1.0.0.0 – 126.255.255.255` | `255.0.0.0` | 8 | 24 | 16,777,214 |
+| **B** | `128.0.0.0 – 191.255.255.255` | `255.255.0.0` | 16 | 16 | 65,534 |
+| **C** | `192.0.0.0 – 223.255.255.255` | `255.255.255.0` | 24 | 8 | 254 |
+| **D** | `224.0.0.0 – 239.255.255.255` | **Reserved for Multicasting** | - | - | - |
+| **E** | `240.0.0.0 – 255.255.255.255` | **Reserved for Experimental Use** | - | - | - |
+
+---
+
+## 📌 Subnet Mask
+A **subnet mask** determines which portion of an IP address belongs to the **network** and which part belongs to **hosts**.
+
+**Example:**
+- **Subnet Mask:** `255.255.255.0`
+- **Binary:** `11111111.11111111.11111111.00000000`
+
+### Common Subnet Masks:
+
+| Subnet Mask | CIDR Notation | No. of Subnets | Hosts per Subnet |
+|-------------|--------------|---------------|------------------|
+| `255.0.0.0` | `/8` | 1 | 16,777,214 |
+| `255.255.0.0` | `/16` | 256 | 65,534 |
+| `255.255.255.0` | `/24` | 65,536 | 254 |
+| `255.255.255.128` | `/25` | 131,072 | 126 |
+| `255.255.255.192` | `/26` | 262,144 | 62 |
+
+---
+
+## 📌 CIDR (Classless Inter-Domain Routing)
+CIDR notation represents subnet masks using a **slash (/)** followed by the number of bits in the network portion.
+
+**Examples:**
+- `192.168.1.0/24` → `255.255.255.0` (256 addresses, 254 usable)
+- `192.168.1.0/26` → `255.255.255.192` (64 addresses, 62 usable)
+
+---
+
+## 📌 Subnetting Calculation
+
+### **Formula to calculate subnets & hosts:**
+1. **Number of Subnets:** `2^n` (where `n` = borrowed bits)
+2. **Number of Hosts per Subnet:** `2^h - 2` (where `h` = host bits, subtracting 2 for network & broadcast)
+
+#### Example:
+- **Given:** `192.168.1.0/26`
+- **Subnet Mask:** `255.255.255.192`
+- **Network Bits:** `26`
+- **Host Bits:** `6`
+- **Number of Subnets:** `2^2 = 4`
+- **Hosts per Subnet:** `2^6 - 2 = 62`
+
+| Subnet | First Usable IP | Last Usable IP | Broadcast |
+|--------|---------------|--------------|-----------|
+| `192.168.1.0/26` | `192.168.1.1` | `192.168.1.62` | `192.168.1.63` |
+| `192.168.1.64/26` | `192.168.1.65` | `192.168.1.126` | `192.168.1.127` |
+| `192.168.1.128/26` | `192.168.1.129` | `192.168.1.190` | `192.168.1.191` |
+| `192.168.1.192/26` | `192.168.1.193` | `192.168.1.254` | `192.168.1.255` |
+
+---
+
+## 📌 VLSM (Variable Length Subnet Masking)
+VLSM allows **different-sized subnets** in the same network, optimizing IP usage.
+
+### Example:
+- `/28` for small networks (**14 hosts**)
+- `/26` for medium networks (**62 hosts**)
+- `/24` for large networks (**254 hosts**)
+
+---
+
+## 📌 Subnetting Example
+
+**Requirement:** Divide `192.168.10.0/24` into four subnets.
+
+1. **Subnet Mask:** `/26` (255.255.255.192)
+2. **Each subnet has:** `62` usable hosts
+3. **New subnet ranges:**
+
+| Subnet | First Usable IP | Last Usable IP | Broadcast |
+|--------|---------------|--------------|-----------|
+| `192.168.10.0/26` | `192.168.10.1` | `192.168.10.62` | `192.168.10.63` |
+| `192.168.10.64/26` | `192.168.10.65` | `192.168.10.126` | `192.168.10.127` |
+| `192.168.10.128/26` | `192.168.10.129` | `192.168.10.190` | `192.168.10.191` |
+| `192.168.10.192/26` | `192.168.10.193` | `192.168.10.254` | `192.168.10.255` |
+
+---
+
+## 📌 Important Terms
+- **Network Address:** First address in a subnet (e.g., `192.168.1.0`)
+- **Broadcast Address:** Last address in a subnet (e.g., `192.168.1.255`)
+- **Usable IPs:** All addresses between the network and broadcast
+- **Public IP:** Used on the internet (e.g., `8.8.8.8`)
+- **Private IP:** Used inside LAN (e.g., `192.168.1.x`)
+
+---
+
+## 📌 Why Subnet?
+✅ **Efficient IP Allocation**  
+✅ **Reduces Network Congestion**  
+✅ **Improves Security**  
+✅ **Enhances Routing Efficiency**  
+
+---
+
+### 🚀 Need subnetting practice problems or tools? Let me know! 😊
 
 # 3. Routing
 Routing determines how data packets travel from source to destination.
